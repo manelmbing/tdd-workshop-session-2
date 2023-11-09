@@ -48,4 +48,14 @@ class PasswordValidatorTest {
         assertFalse(isValid);
     }
 
+    @Test
+    void shouldNotBeValidIfIsDoesNotContainsLowercaseLetter() {
+        String password = "ABCDEF123_";
+        PasswordValidator passwordValidator = new PasswordValidator();
+
+        boolean isValid = passwordValidator.validate(password);
+
+        assertFalse(isValid);
+    }
+
 }

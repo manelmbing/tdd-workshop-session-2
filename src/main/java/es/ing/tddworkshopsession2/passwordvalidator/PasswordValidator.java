@@ -8,6 +8,9 @@ public class PasswordValidator {
         if (password.toLowerCase().equals(password)){
             return false;
         }
+        if (password.toUpperCase().equals(password)){
+            return false;
+        }
         return true;
     }
 }
