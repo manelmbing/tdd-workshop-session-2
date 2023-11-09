@@ -58,4 +58,14 @@ class PasswordValidatorTest {
         assertFalse(isValid);
     }
 
+    @Test
+    void shouldNotBeValidIfIsDoesNotContainsDigits() {
+        String password = "ABCdefGHI_";
+        PasswordValidator passwordValidator = new PasswordValidator();
+
+        boolean isValid = passwordValidator.validate(password);
+
+        assertFalse(isValid);
+    }
+
 }
