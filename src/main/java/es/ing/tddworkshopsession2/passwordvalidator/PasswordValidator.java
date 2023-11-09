@@ -5,6 +5,9 @@ public class PasswordValidator {
         if (password.length() < 8) {
             return false;
         }
+        if (password.toLowerCase().equals(password)){
+            return false;
+        }
         return true;
     }
 }

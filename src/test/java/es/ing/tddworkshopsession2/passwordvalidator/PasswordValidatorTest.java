@@ -38,4 +38,14 @@ class PasswordValidatorTest {
         assertFalse(isValid);
     }
 
+    @Test
+    void shouldNotBeValidIfIsDoesNotContainsCapitalLetter() {
+        String password = "abcdef123_";
+        PasswordValidator passwordValidator = new PasswordValidator();
+
+        boolean isValid = passwordValidator.validate(password);
+
+        assertFalse(isValid);
+    }
+
 }
