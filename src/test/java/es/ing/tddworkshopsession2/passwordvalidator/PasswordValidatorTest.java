@@ -68,4 +68,14 @@ class PasswordValidatorTest {
         assertFalse(isValid);
     }
 
+    @Test
+    void shouldNotBeValidIfIsDoesNotContainsSpecialChars() {
+        String password = "ABCdef1234";
+        PasswordValidator passwordValidator = new PasswordValidator();
+
+        boolean isValid = passwordValidator.validate(password);
+
+        assertFalse(isValid);
+    }
+
 }

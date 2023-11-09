@@ -5,7 +5,8 @@ public class PasswordValidator {
         if (hasNotMinimumRequiredLength(password)
                 || doesNotContainsUppercaseLetters(password)
                 || doesNotContainsLowercaseLetters(password)
-                || doesNotContainsDigits(password)) {
+                || doesNotContainsDigits(password)
+                || doesNotContainsSpecialChars(password)) {
             return false;
         }
 
@@ -26,5 +27,9 @@ public class PasswordValidator {
 
     private static boolean doesNotContainsDigits(String password) {
         return !password.matches(".*\\d.*");
+    }
+
+    private static boolean doesNotContainsSpecialChars(String password) {
+        return !password.matches(".*[^a-zA-Z0-9].*");
     }
 }
