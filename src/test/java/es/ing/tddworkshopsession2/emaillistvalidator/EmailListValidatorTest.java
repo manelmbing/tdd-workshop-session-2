@@ -33,4 +33,13 @@ class EmailListValidatorTest {
         assertThrows(InvalidParameterException.class, () -> emailService.validateEmails(new ArrayList<>()));
     }
 
+    @Test
+    void shouldReturnValidEmailIfOneAddressIsProvided(){
+        EmailService emailService = new EmailService();
+
+        String result = emailService.validateEmails(List.of("email@domain.com"));
+
+        assertEquals("email@domain.com", result);
+    }
+
 }

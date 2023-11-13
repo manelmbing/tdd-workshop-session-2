@@ -5,6 +5,10 @@ import java.util.List;
 
 public class EmailService {
     public String validateEmails(List<String> mails) {
-        throw new InvalidParameterException();
+        if (mails.isEmpty()) {
+            throw new InvalidParameterException();
+        } else {
+            return mails.get(0);
+        }
     }
 }
