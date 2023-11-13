@@ -1,5 +1,7 @@
 package es.ing.tddworkshopsession2.emaillistvalidator;
 
+import org.springframework.util.StringUtils;
+
 import java.security.InvalidParameterException;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class EmailService {
         if (mails.isEmpty()) {
             throw new InvalidParameterException();
         } else {
-            return mails.get(0);
+            return String.join(",", mails);
         }
     }
 }

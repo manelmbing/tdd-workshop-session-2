@@ -19,8 +19,8 @@ class EmailListValidatorTest {
     *
     *  Use cases:
     *  + Z: If no address is provided we return an error.
-    *  - O: At least one address is needed.
-    *  - M: We can send the email to more than one address.
+    *  + O: At least one address is needed.
+    *  + M: We can send the email to more than one address.
     *  - B: Email cannot be sent to more than 10 addresses.
     *  - I: Addresses must be well-formed: username + @ + server + . + domain.
     *  - E: Addresses can not be repeated, if so return an error.
@@ -40,6 +40,15 @@ class EmailListValidatorTest {
         String result = emailService.validateEmails(List.of("email@domain.com"));
 
         assertEquals("email@domain.com", result);
+    }
+
+    @Test
+    void shouldReturnValidEmailIfMoreThanOneAddressIsProvided(){
+        EmailService emailService = new EmailService();
+
+        String result = emailService.validateEmails(List.of("email1@domain.com", "email2@domain.com"));
+
+        assertEquals("email1@domain.com,email2@domain.com", result);
     }
 
 }
