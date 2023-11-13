@@ -21,7 +21,7 @@ class EmailListValidatorTest {
     *  + Z: If no address is provided we return an error.
     *  + O: At least one address is needed.
     *  + M: We can send the email to more than one address.
-    *  - B: Email cannot be sent to more than 10 addresses.
+    *  + B: Email cannot be sent to more than 10 addresses.
     *  - I: Addresses must be well-formed: username + @ + server + . + domain.
     *  - E: Addresses can not be repeated, if so return an error.
     *  - S: KISS!
@@ -49,6 +49,17 @@ class EmailListValidatorTest {
         String result = emailService.validateEmails(List.of("email1@domain.com", "email2@domain.com"));
 
         assertEquals("email1@domain.com,email2@domain.com", result);
+    }
+
+    @Test
+    void shouldRaiseAnErrorIfMoreOfTenAddressesAreProvided(){
+        EmailService emailService = new EmailService();
+
+        List<String> emails = List.of("email1@domain.com", "email2@domain.com", "email3@domain.com",
+                "email4@domain.com", "email5@domain.com", "email6@domain.com", "email7@domain.com",
+                "email8@domain.com", "email9@domain.com", "email10@domain.com", "email11@domain.com");
+
+        assertThrows(InvalidParameterException.class, () -> emailService.validateEmails(emails));
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class EmailService {
     public String validateEmails(List<String> mails) {
-        if (mails.isEmpty()) {
+        if (mails.isEmpty() || mails.size() > 10) {
             throw new InvalidParameterException();
         } else {
             return String.join(",", mails);
