@@ -1,5 +1,13 @@
 package es.ing.tddworkshopsession2.emaillistvalidator;
 
+import org.junit.jupiter.api.Test;
+
+import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class EmailListValidatorTest {
 
     /*
@@ -10,7 +18,7 @@ class EmailListValidatorTest {
     *       i.e: "to: address1@email.com, address2@email.com, ..."
     *
     *  Use cases:
-    *  - Z: If no address is provided we return an error.
+    *  + Z: If no address is provided we return an error.
     *  - O: At least one address is needed.
     *  - M: We can send the email to more than one address.
     *  - B: Email cannot be sent to more than 10 addresses.
@@ -18,5 +26,11 @@ class EmailListValidatorTest {
     *  - E: Addresses can not be repeated, if so return an error.
     *  - S: KISS!
     */
+
+    @Test
+    void shouldRaiseAnErrorIfNoAddressIsProvided(){
+        EmailService emailService = new EmailService();
+        assertThrows(InvalidParameterException.class, () -> emailService.validateEmails(new ArrayList<>()));
+    }
 
 }
