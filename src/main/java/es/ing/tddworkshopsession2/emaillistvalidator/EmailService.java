@@ -1,7 +1,6 @@
 package es.ing.tddworkshopsession2.emaillistvalidator;
 
 import java.security.InvalidParameterException;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
