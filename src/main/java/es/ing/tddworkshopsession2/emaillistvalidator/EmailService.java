@@ -2,7 +2,9 @@ package es.ing.tddworkshopsession2.emaillistvalidator;
 
 import java.security.InvalidParameterException;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class EmailService {
 
@@ -18,20 +20,15 @@ public class EmailService {
     }
 
     private boolean containsNonValidEmails(List<String> mails) {
-        for (String mail : mails) {
-            if (mail.matches(EMAIL_REGEX)) {
-                return true;
-            }
-        }
-        return false;
+        return mails.stream()
+                .filter(mail -> mail.matches(EMAIL_REGEX))
+                .count() != mails.size();
     }
 
     private boolean hasRepeatedMails(List<String> mails) {
-        for (String mail : mails) {
-            if (Collections.frequency(mails, mail) > 1) {
-                return true;
-            }
-        }
-        return false;
+        Set<String> items = new HashSet<>();
+        return mails.stream()
+                .filter(items::add)
+                .count() != mails.size();
     }
 }
